@@ -2,9 +2,7 @@ package tech.ipponusa.service.impl;
 
 import tech.ipponusa.service.PtoPeriodService;
 import tech.ipponusa.domain.PtoPeriod;
-import tech.ipponusa.repository.EmployeeRepository;
 import tech.ipponusa.repository.PtoPeriodRepository;
-import tech.ipponusa.security.SecurityUtils;
 import tech.ipponusa.service.dto.PtoPeriodDTO;
 import tech.ipponusa.service.mapper.PtoPeriodMapper;
 import org.slf4j.Logger;
@@ -28,9 +26,6 @@ public class PtoPeriodServiceImpl implements PtoPeriodService{
     
     @Inject
     private PtoPeriodRepository ptoPeriodRepository;
-    
-    @Inject 
-    private EmployeeRepository employeeRepository;
 
     @Inject
     private PtoPeriodMapper ptoPeriodMapper;
@@ -44,15 +39,6 @@ public class PtoPeriodServiceImpl implements PtoPeriodService{
     public PtoPeriodDTO save(PtoPeriodDTO ptoPeriodDTO) {
         log.debug("Request to save PtoPeriod : {}", ptoPeriodDTO);
         PtoPeriod ptoPeriod = ptoPeriodMapper.ptoPeriodDTOToPtoPeriod(ptoPeriodDTO);
-        
-        //Modify the PTO period based on who is logged in.
-        String user = SecurityUtils.getCurrentUserLogin();
-        log.info("PTO Period Info");
-        log.info("User Requesting:"  + user);
-        
-        //Employee employee = employeeRepository.fin
-        
-        
         ptoPeriod = ptoPeriodRepository.save(ptoPeriod);
         PtoPeriodDTO result = ptoPeriodMapper.ptoPeriodToPtoPeriodDTO(ptoPeriod);
         return result;

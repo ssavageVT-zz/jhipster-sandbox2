@@ -44,14 +44,14 @@ entity Employee {
 	commissionPct Long
 }
 
-entity PtoPeriod {
+entity PTOPeriod {
 	endDate ZonedDateTime,
     hoursAllowed Long,
     daysInPeriod Long,
     hoursRemaining Long
 }
 
-entity PtoRequest {
+entity PTORequest {
 	requestDate ZonedDateTime,
     hoursRequested Long,
     isApproved Boolean,
@@ -103,12 +103,14 @@ relationship OneToMany {
 	*/
 	Employee,
     
-    Employee{ptoperiod} to PtoPeriod,
+    Employee{ptoperiod} to PTOPeriod,
     
-    Employee{ptorequest} to PtoRequest
-
+    Employee{ptorequest} to PTORequest
 }
 
+relationship ManyToOne {
+	Employee{manager} to Employee
+}
 
 // defining multiple oneToOne relationships
 relationship OneToOne {
@@ -124,6 +126,6 @@ paginate Job with pagination
 dto * with mapstruct
 
 // Set service options to all except few
-service all with serviceImpl except Employee, Job
+service all with serviceImpl except Job
 // Set an angular suffix
 angularSuffix * with mySuffix

@@ -24,6 +24,12 @@
             "relationshipName": "ptorequest",
             "otherEntityName": "ptoRequest",
             "otherEntityRelationshipName": "employee"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "manager",
+            "otherEntityName": "employee",
+            "otherEntityField": "id"
         }
     ],
     "fields": [
@@ -57,11 +63,11 @@
             "fieldType": "Long"
         }
     ],
-    "changelogDate": "20160921223620",
+    "changelogDate": "20160922144545",
     "javadoc": "The Employee entity.",
     "entityTableName": "employee",
     "dto": "mapstruct",
     "pagination": "infinite-scroll",
-    "service": "no",
+    "service": "serviceImpl",
     "angularSuffix": "mySuffix"
 }

@@ -4,6 +4,7 @@ import tech.ipponusa.PtotrackerApp;
 
 import tech.ipponusa.domain.Employee;
 import tech.ipponusa.repository.EmployeeRepository;
+import tech.ipponusa.service.EmployeeService;
 import tech.ipponusa.service.dto.EmployeeDTO;
 import tech.ipponusa.service.mapper.EmployeeMapper;
 
@@ -72,6 +73,9 @@ public class EmployeeResourceIntTest {
     private EmployeeMapper employeeMapper;
 
     @Inject
+    private EmployeeService employeeService;
+
+    @Inject
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Inject
@@ -88,8 +92,7 @@ public class EmployeeResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         EmployeeResource employeeResource = new EmployeeResource();
-        ReflectionTestUtils.setField(employeeResource, "employeeRepository", employeeRepository);
-        ReflectionTestUtils.setField(employeeResource, "employeeMapper", employeeMapper);
+        ReflectionTestUtils.setField(employeeResource, "employeeService", employeeService);
         this.restEmployeeMockMvc = MockMvcBuilders.standaloneSetup(employeeResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();

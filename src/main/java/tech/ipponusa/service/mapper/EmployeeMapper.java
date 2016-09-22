@@ -13,6 +13,7 @@ import java.util.List;
 public interface EmployeeMapper {
 
     @Mapping(source = "department.id", target = "departmentId")
+    @Mapping(source = "manager.id", target = "managerId")
     EmployeeDTO employeeToEmployeeDTO(Employee employee);
 
     List<EmployeeDTO> employeesToEmployeeDTOs(List<Employee> employees);
@@ -21,6 +22,7 @@ public interface EmployeeMapper {
     @Mapping(target = "jobs", ignore = true)
     @Mapping(target = "ptoperiods", ignore = true)
     @Mapping(target = "ptorequests", ignore = true)
+    @Mapping(source = "managerId", target = "manager")
     Employee employeeDTOToEmployee(EmployeeDTO employeeDTO);
 
     List<Employee> employeeDTOsToEmployees(List<EmployeeDTO> employeeDTOs);
@@ -32,5 +34,14 @@ public interface EmployeeMapper {
         Department department = new Department();
         department.setId(id);
         return department;
+    }
+
+    default Employee employeeFromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        Employee employee = new Employee();
+        employee.setId(id);
+        return employee;
     }
 }
