@@ -27,7 +27,6 @@
                     <th jh-sort-by="salary"><span>Salary</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="commissionPct"><span>Commission Pct</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="departmentId"><span>Department</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="managerId"><span>Manager</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -43,9 +42,6 @@
                     <td>{{employee.commissionPct}}</td>
                     <td>
                         <a ui-sref="department-detail({id:employee.departmentId})">{{employee.departmentId}}</a>
-                    </td>
-                    <td>
-                        <a ui-sref="employee-detail({id:employee.managerId})">{{employee.managerId}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

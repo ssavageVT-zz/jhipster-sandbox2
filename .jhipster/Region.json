@@ -14,7 +14,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20160921223615",
+    "changelogDate": "20160922173951",
     "entityTableName": "region",
     "dto": "mapstruct",
     "pagination": "no",

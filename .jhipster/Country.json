@@ -20,7 +20,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20160921223616",
+    "changelogDate": "20160922173952",
     "entityTableName": "country",
     "dto": "mapstruct",
     "pagination": "no",

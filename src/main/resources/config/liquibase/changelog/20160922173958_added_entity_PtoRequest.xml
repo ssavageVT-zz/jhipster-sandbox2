@@ -14,26 +14,26 @@
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
     <!--
-        Added the entity PtoPeriod.
+        Added the entity PtoRequest.
     -->
-    <changeSet id="20160921223621-1" author="jhipster">
-        <createTable tableName="pto_period">
+    <changeSet id="20160922173958-1" author="jhipster">
+        <createTable tableName="pto_request">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="end_date" type="timestamp">
+            <column name="request_date" type="timestamp">
                 <constraints nullable="true" />
             </column>
             
-            <column name="hours_allowed" type="bigint">
+            <column name="hours_requested" type="bigint">
                 <constraints nullable="true" />
             </column>
             
-            <column name="days_in_period" type="bigint">
+            <column name="is_approved" type="bit">
                 <constraints nullable="true" />
             </column>
             
-            <column name="hours_remaining" type="bigint">
+            <column name="approved_by" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             
@@ -43,7 +43,7 @@
 
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="pto_period" columnName="end_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pto_request" columnName="request_date" columnDataType="datetime"/>
         
     </changeSet>
 </databaseChangeLog>

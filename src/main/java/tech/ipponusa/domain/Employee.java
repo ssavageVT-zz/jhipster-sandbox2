@@ -69,9 +69,6 @@ public class Employee implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<PtoRequest> ptorequests = new HashSet<>();
 
-    @ManyToOne
-    private Employee manager;
-
     public Long getId() {
         return id;
     }
@@ -257,19 +254,6 @@ public class Employee implements Serializable {
 
     public void setPtorequests(Set<PtoRequest> ptoRequests) {
         this.ptorequests = ptoRequests;
-    }
-
-    public Employee getManager() {
-        return manager;
-    }
-
-    public Employee manager(Employee employee) {
-        this.manager = employee;
-        return this;
-    }
-
-    public void setManager(Employee employee) {
-        this.manager = employee;
     }
 
     @Override

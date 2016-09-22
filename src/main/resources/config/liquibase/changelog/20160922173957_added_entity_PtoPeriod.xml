@@ -14,35 +14,36 @@
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
     <!--
-        Added the entity JobHistory.
+        Added the entity PtoPeriod.
     -->
-    <changeSet id="20160921223624-1" author="jhipster">
-        <createTable tableName="job_history">
+    <changeSet id="20160922173957-1" author="jhipster">
+        <createTable tableName="pto_period">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="start_date" type="timestamp">
-                <constraints nullable="true" />
-            </column>
-            
             <column name="end_date" type="timestamp">
                 <constraints nullable="true" />
             </column>
             
-            <column name="language" type="varchar(255)">
+            <column name="hours_allowed" type="bigint">
                 <constraints nullable="true" />
             </column>
-                        <column name="job_id" type="bigint">
-                <constraints unique="true" nullable="true" />
-            </column>            <column name="department_id" type="bigint">
-                <constraints unique="true" nullable="true" />
-            </column>            <column name="employee_id" type="bigint">
-                <constraints unique="true" nullable="true" />
+            
+            <column name="days_in_period" type="bigint">
+                <constraints nullable="true" />
             </column>
+            
+            <column name="hours_remaining" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="employee_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="job_history" columnName="start_date" columnDataType="datetime"/>
-        <dropDefaultValue tableName="job_history" columnName="end_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pto_period" columnName="end_date" columnDataType="datetime"/>
         
     </changeSet>
 </databaseChangeLog>

@@ -41,7 +41,7 @@
             "fieldValues": "FRENCH,ENGLISH,SPANISH"
         }
     ],
-    "changelogDate": "20160921223624",
+    "changelogDate": "20160922173900",
     "entityTableName": "job_history",
     "dto": "mapstruct",
     "pagination": "infinite-scroll",

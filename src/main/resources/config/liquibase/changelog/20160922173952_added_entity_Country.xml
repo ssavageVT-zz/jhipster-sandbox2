@@ -16,7 +16,7 @@
     <!--
         Added the entity Country.
     -->
-    <changeSet id="20160921223616-1" author="jhipster">
+    <changeSet id="20160922173952-1" author="jhipster">
         <createTable tableName="country">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>

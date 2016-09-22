@@ -26,7 +26,7 @@
             "fieldType": "Long"
         }
     ],
-    "changelogDate": "20160921223621",
+    "changelogDate": "20160922173957",
     "entityTableName": "pto_period",
     "dto": "mapstruct",
     "pagination": "no",

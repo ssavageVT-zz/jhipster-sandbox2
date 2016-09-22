@@ -44,14 +44,14 @@ entity Employee {
 	commissionPct Long
 }
 
-entity PTOPeriod {
+entity PtoPeriod {
 	endDate ZonedDateTime,
     hoursAllowed Long,
     daysInPeriod Long,
     hoursRemaining Long
 }
 
-entity PTORequest {
+entity PtoRequest {
 	requestDate ZonedDateTime,
     hoursRequested Long,
     isApproved Boolean,
@@ -103,13 +103,9 @@ relationship OneToMany {
 	*/
 	Employee,
     
-    Employee{ptoperiod} to PTOPeriod,
+    Employee{ptoperiod} to PtoPeriod,
     
-    Employee{ptorequest} to PTORequest
-}
-
-relationship ManyToOne {
-	Employee{manager} to Employee
+    Employee{ptorequest} to PtoRequest
 }
 
 // defining multiple oneToOne relationships

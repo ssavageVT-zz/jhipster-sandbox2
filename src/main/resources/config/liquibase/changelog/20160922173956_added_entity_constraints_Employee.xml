@@ -6,19 +6,13 @@
     <!--
         Added the constraints for entity Employee.
     -->
-    <changeSet id="20160922144545-2" author="jhipster">
+    <changeSet id="20160922173956-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="department_id"
                                  baseTableName="employee"
                                  constraintName="fk_employee_department_id"
                                  referencedColumnNames="id"
                                  referencedTableName="department"/>
-
-        <addForeignKeyConstraint baseColumnNames="manager_id"
-                                 baseTableName="employee"
-                                 constraintName="fk_employee_manager_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="employee"/>
 
     </changeSet>
 </databaseChangeLog>

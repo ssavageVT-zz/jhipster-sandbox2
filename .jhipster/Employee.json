@@ -24,12 +24,6 @@
             "relationshipName": "ptorequest",
             "otherEntityName": "ptoRequest",
             "otherEntityRelationshipName": "employee"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "manager",
-            "otherEntityName": "employee",
-            "otherEntityField": "id"
         }
     ],
     "fields": [
@@ -63,7 +57,7 @@
             "fieldType": "Long"
         }
     ],
-    "changelogDate": "20160922144545",
+    "changelogDate": "20160922173956",
     "javadoc": "The Employee entity.",
     "entityTableName": "employee",
     "dto": "mapstruct",

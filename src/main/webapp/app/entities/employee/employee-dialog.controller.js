@@ -19,7 +19,6 @@
         vm.jobs = Job.query();
         vm.ptoperiods = PtoPeriod.query();
         vm.ptorequests = PtoRequest.query();
-        vm.employees = Employee.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

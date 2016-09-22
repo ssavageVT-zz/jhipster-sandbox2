@@ -26,7 +26,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20160921223622",
+    "changelogDate": "20160922173958",
     "entityTableName": "pto_request",
     "dto": "mapstruct",
     "pagination": "no",
