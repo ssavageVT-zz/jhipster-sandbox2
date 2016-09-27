@@ -3,6 +3,7 @@ package tech.ipponusa.service.impl;
 import tech.ipponusa.service.PtoPeriodService;
 import tech.ipponusa.domain.Employee;
 import tech.ipponusa.domain.PtoPeriod;
+import tech.ipponusa.domain.PtoRequest;
 import tech.ipponusa.domain.User;
 import tech.ipponusa.domain.util.JSR310DateConverters;
 import tech.ipponusa.domain.util.JSR310DateConverters.ZonedDateTimeToDateConverter;
@@ -150,7 +151,7 @@ public class PtoPeriodServiceImpl implements PtoPeriodService {
 		// Check what the current date is, take the number of days difference
 		// Since the beginning of the period
 		
-		Date beginDate = determineStartDate(employee);		
+		Date beginDate = determineBeginDate(employee);		
 		Date endDate = ZonedDateTimeToDateConverter.INSTANCE.convert(init.getEndDate());
 		Date today = ZonedDateTimeToDateConverter.INSTANCE.convert(ZonedDateTime.now());
 		
@@ -160,13 +161,12 @@ public class PtoPeriodServiceImpl implements PtoPeriodService {
 		Long hoursAccrued = (long) ((TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)) * dailyAccrual);
 		log.info("Hours: " + hoursAccrued);
 		
-		init.setHoursRemaining(hoursAccrued);
 		init = deductTimeOff(init);
 		return init;
 		
 	}
 	
-	private Date determineStartDate(Employee employee){
+	private Date determineBeginDate(Employee employee){
 		
 		//Get All PtoPeriods for a given Employee
 		List<PtoPeriod> ptoPeriods = ptoPeriodRepository.findPtoPeriodForEmployee(employee.getId());
@@ -181,7 +181,17 @@ public class PtoPeriodServiceImpl implements PtoPeriodService {
 	}
 
 	private PtoPeriodDTO deductTimeOff(PtoPeriodDTO init) {
-
+		
+		//Get a list of PtoRequests for the given employee
+		Long totalRequestedHours = (long) 0;
+		
+		List<PtoRequest> ptoRequests = ptoRequestRepository.findPtoRequestsForEmployee(init.getEmployeeId());
+		for(PtoRequest p : ptoRequests){
+			totalRequestedHours += p.getHoursRequested();
+		}
+		
+		init.setHoursRemaining(init.getHoursAllowed() - totalRequestedHours);;
+		
 		return init;
 	}
 

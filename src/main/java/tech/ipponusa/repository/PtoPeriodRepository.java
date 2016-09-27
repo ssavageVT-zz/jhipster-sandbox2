@@ -15,7 +15,7 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface PtoPeriodRepository extends JpaRepository<PtoPeriod,Long> {
 	
-	@Query("From PtoPeriod p where p.employeeID = :employeeID order by end_date desc")
+	@Query("From PtoPeriod p where p.employee.id = :employeeID order by end_date desc")
 	@Transactional(readOnly=true)
 	public List<PtoPeriod> findPtoPeriodForEmployee(@Param("employeeID") Long employeeID);
 	
